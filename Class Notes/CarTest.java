@@ -39,4 +39,12 @@ public class CarTest
     public void tearDown()
     {
     }
+    
+    @Test
+    public void testGetFuelInTank()
+    {
+        Car testCar = new Car( 50 );    //create a car object that gets 50mpg
+        double amount = testCar.getFuelInTank(); // test the method by running it on the new Car
+        assertEquals(0, amount, 1e-6);  // make sure that the expected value of fuel and the actual value match
+    }
 }
