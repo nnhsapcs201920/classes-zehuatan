@@ -86,6 +86,7 @@ public class Car  // public means others can see and use it
     public void drive(double distance)
     {
         // write method headers first and test and fill in the method bodies later
+        this.fuelInTank -= (distance/this.fuelEfficiency);
     }
     /**
      * Adds the specified amount of fuel to this car's tank
@@ -94,7 +95,7 @@ public class Car  // public means others can see and use it
      */
     public void addFuel(double amount)
     {
-        
+        this.fuelInTank += amount;
     }
     
     /**
@@ -104,7 +105,7 @@ public class Car  // public means others can see and use it
      */
     public double getFuelInTank()
     {
-        return 0;
+        return this.fuelInTank;
     }
     
     /**
@@ -114,7 +115,7 @@ public class Car  // public means others can see and use it
      */
     public void setLicensePlate(String plate)
     {
-        
+       this.licensePlate = plate; 
     }
     
     /**
@@ -124,6 +125,6 @@ public class Car  // public means others can see and use it
      */
     public String getLicensePlate()
     {
-       return ""; 
+       return this.licensePlate; 
     }
 }
