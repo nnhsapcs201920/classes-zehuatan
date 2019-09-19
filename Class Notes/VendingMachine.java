@@ -17,7 +17,7 @@ public class VendingMachine
     private int cansInMachine;
     
     /**
-     * Default constructor for the VendingMachine class
+     * Default constructor for the VendingMachine class.
      * Initializes tokens in the machine to 0 and cans in the machine to 10.
      */
     
@@ -64,7 +64,7 @@ public class VendingMachine
     }
     
     /**
-     * Returns the number of cans of soda in the machine.
+     * Returns the number of cans of soda in the vending machine.
      */
     public int getCanCount()
     {
