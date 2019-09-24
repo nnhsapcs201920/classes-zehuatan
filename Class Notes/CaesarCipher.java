@@ -64,8 +64,36 @@ public class CaesarCipher
         System.out.println(secondsPerGuess);
     }
     
-    
-    
+    /**
+     * Formats the average time to crack the cipher based on the specified number of seconds and
+     * displays it via System.out in several formats.
+     * 
+     * @param totalSeconds the total number of seconds to crack the cipher
+     * 
+     * This methods is static and is independent of th estate of a CaesarCipher object. As a result, this method
+     * may be invoked on the class instead of on a variable that references an object.
+     *      (e.g. CaesarCipher.printAverageTimeToCrack())
+     *      
+     * Static methods cannot access any instance variables. They can only access static class variables.
+     */
+    public static void printAverageTimeToCrack(long totalSeconds)
+    {
+        /*
+         * Instead of using "magic numbers" (e.g. 3.14159), use constants defined by us or the Java Standard Library.
+         * 
+         * For example, in the Math class is defined:
+         * public static final double PI = 3.141592654;
+         * 
+         * Declare a constant with the final keyword. If we try to change the value, a compile error will be generated.
+         * By convention, constants are in all caps.
+         */
+        final int SECONDS_FOR_EVERY_MINUTE = 60;
+        final int MINUTES_FOR_EVERY_HOUR = 60;
+        final int HOURS_FOR_EVERY_DAY = 24;
+        final int DAYS_FOR_EVERY_YEAR = 365;
+        
+        //SECONDS_FOR_EVERY_MINUTE = 50; cannot reassign to a final variable
+    }
     
     
     /**
