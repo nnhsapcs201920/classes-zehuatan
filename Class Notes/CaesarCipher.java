@@ -62,6 +62,18 @@ public class CaesarCipher
         // test both inputs by saving and printing their values back to the terminal
         System.out.println(text);
         System.out.println(secondsPerGuess);
+        
+        /*
+         * Know how to generate a random number from a range (e.g. between 1-26)
+         * We could use the Random class -->
+         *      e.g. int randomNumber = randomObject.nextInt(26) + 1;
+         * Or, we can use the Math class's Math.random() static method
+         *      e.g. int randomNumber = (int) (Math.random() * (max-min+1)) + min);
+         *      
+         */
+        
+        int letterIndex = (int) ((Math.random() * 26) + 1);
+        System.out.println("Randomly generated value from 1-26:" + letterIndex);
     }
     
     /**
@@ -105,26 +117,85 @@ public class CaesarCipher
          * In Java, the type of divison executed depends on the type of values (or operands)
          */
         
-        long totalMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
+        long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
         
         /*
          * Use the modulo operator (%) to return the remainder of the division operation.
          * It can be useful when paired with integer division.
          */
         
-        long seconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
+        long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
         
-        long totalHours = totalMinutes / MINUTES_FOR_EVERY_HOUR;
-        long minutes = totalMinutes % MINUTES_FOR_EVERY_HOUR;
+        long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
+        long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
         
-        long totalDays = totalHours / HOURS_FOR_EVERY_DAY;
-        long hours = totalHours % HOURS_FOR_EVERY_DAY;
+        long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
+        long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
         
-        long years = totalDays / DAYS_FOR_EVERY_YEAR;
-        long days = totalDays % DAYS_FOR_EVERY_YEAR;
+        long leftoverYears = wholeDays / DAYS_FOR_EVERY_YEAR;
+        long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
         
-        System.out.println("Average time to crack: " + years + " years, " + days + " days, "
-        + hours + " hours, " + minutes + " minutes, " + seconds + " seconds.");
+        System.out.println("Average time to crack: " + leftoverYears + " years, " 
+        + leftoverDays + " days, " + leftoverHours + " hours, " + leftoverMinutes
+        + " minutes, " + leftoverSeconds + " seconds.");
+        
+        /*
+         * A conversion is when a data value is converted form one type to another (e.g.
+         * int to a double, double to an int, int to a long)
+         * 
+         * Widening: preserves information (e.g. int to double, int to long)
+         * Java automatically does this.
+         * 
+         * Narrowing (lossy): may lose information (e.g. double to int)
+         * 
+         * This is a widening conversion (i.e. long to double)
+         * 
+         */
+        
+        double yearsAsDecimal = totalSeconds;
+        
+        /*
+         * Arithmetic Promotion
+         * 
+         * if the two operands are of different types, Java attempts to convert one of the
+         * types (widening conversion) and then performs the operation
+         * 
+         * In this case, both SECONDS_FOR_EVERY_MINUTE and MINUTES_FOR_EVERY_HOUR are
+         * ints; so, Java does not perform promotion, and just performs integer multiplication
+         */
+        
+        final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE * MINUTES_FOR_EVERY_HOUR *
+        HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+        
+        /*
+         * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double and then 
+         * the floating-point division is performed and assigned to yearsAsDecimal. The local 
+         * variable SECONDS_FOR_EVERY_YEAR is still a long and has the same value.
+         */
+        
+        yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
+        
+        System.out.println("or" + yearsAsDecimal + " years");
+        
+        /*
+         * A cast is "I know what I'm doing: trust me" conversion
+         * 
+         * A cast can perform a narrowing conversion because we are explicitly doing so.
+         * 
+         * (int) (84.69) --> truncate to an int (84)
+         * 
+         * 
+         * If we want to round a double to the nearest int value, use Math.round static method:
+         * 
+         *      public static long round( double value );
+         *      public static int round( float value );
+         *      
+         *      The following divides yearsAsDecimal by 10, rounds the result to the nearest decade
+         *      and then casts the resulting double to an int.
+         */
+        int decades = (int) Math.round(yearsAsDecimal / 10);
+        System.out.println("or about " + decades + " decades");
+        
     }
     
     
