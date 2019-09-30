@@ -10,6 +10,19 @@ import java.util.Scanner;
  */
 public class CaesarCipher
 {
+    /*
+     * String literal
+     * is an instance of the String class (not a primitive)
+     *  delineated by double quotes
+     *  and is defined on a single line
+     *  
+     *  "ABCDEFGHIJKLMNOPQRSTUVWXYZ" is a String literal
+     *  equivalent to: new String "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+     *  
+     *  STATIC: one value for the variable for all objects of the class; can be accessed directly
+     *  (e.g. CaesarCipher.ALPHABET) - just like Math.PI and System.out 
+     */
+    
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
     public static void main(String[] args)
@@ -49,6 +62,14 @@ public class CaesarCipher
         String text = s.nextLine();
         text = text.toUpperCase();
         
+        System.out.print("Enter the keyphrase (no spaces): ");
+        /*
+         * The next method returns the next token in the stream as a string
+         */
+        
+        String keyphrase = s.next();
+        keyphrase = keyphrase.toUpperCase();
+        
         System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
         
         /*
@@ -74,6 +95,18 @@ public class CaesarCipher
         
         int letterIndex = (int) ((Math.random() * 26) + 1);
         System.out.println("Randomly generated value from 1-26:" + letterIndex);
+        
+        //prepare the keyphrase by removing duplicate letters
+        keyphrase = CaesarCipher.compressKeyphrase(keyphrase);
+        
+        long averageTimeToCrack = CaesarCipher.calculateAverageTimeToCrack(keyphrase.length(), 
+        secondsPerGuess);
+        
+        CaesarCipher.printAverageTimeToCrack(averageTimeToCrack);
+        
+        String encryptedText = CaesarCipher.encrypt(text, keyphrase);
+        System.out.println("Encrypted: " + encryptedText);
+        
     }
     
     /**
@@ -198,7 +231,81 @@ public class CaesarCipher
         
     }
     
-    
+    /**
+     * Compresses the specified keyphrase by removing duplicate letters.
+     * 
+     * @param keyphrase the keyphrase to compress
+     * @return the keyphrase with all duplicate letters removed
+     */
+    public static String compressKeyphrase(String keyphrase)
+    {
+        String compressedKeyphrase = "";
+        
+        /*
+         * length
+         *      returns the number of characters in the string
+         */
+        
+        int keyphraseLength = keyphrase.length();
+        
+        for(int i = 0; i < keyphraseLength; i++)
+        {
+            /*
+             * charAt
+             *      returns the character (of type char) at the specified index (0 based)
+             *      
+             * C A E S A R
+             * 0 1 2 3 4 5  <-- indices
+             *      
+             * length = 6
+             */
+            
+            char letter = keyphrase.charAt(i);
+            
+            /*
+             * substring
+             *      returns part of the string starting at the first index up to, but not including
+             *      the second index.
+             *      
+             *      if only one index is specified, returns part of the string starting at the index
+             *      through the end of the string.
+             *      
+             *  C A E S A R
+             *  0 1 2 3 4 5  <-- indices
+             */
+            
+            String restOfKeyphrase = keyphrase.substring(i+1);
+            //could be:
+            //String restOfKeyphrase = keyphrase.substring(i+1,keyphrase.length());
+            
+            /*
+             * indexOf
+             *      returns the index of the start of the first occurence of the specified string
+             *      if not found, returns -1
+             *      
+             * C A E S A R
+             * 0 1 2 3 4 5  <-- indices
+             * 
+             * length = 5
+             */
+            
+            int index = restOfKeyphrase.indexOf(letter);
+            
+            /*
+             * String concatenation
+             *      + is the string concatenation operator
+             *      concatenates the second string operand to the end of the first string operand
+             *      if one or both operands are Strings, + is the string concatenation operator
+             *      (operands are converted to Strings)
+             */
+            
+            if(index==-1)
+            {
+                compressedKeyphrase = compressedKeyphrase + letter;
+            }
+        }
+        return compressedKeyphrase;
+    }
     
     
     
