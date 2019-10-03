@@ -1,6 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
+import java.awt.Color;
 
 /**
  * Class that creates instances of the classes that comprise the cityscape and delegates drawing the
@@ -13,11 +14,16 @@ public class CityscapeComponent extends JComponent
 {
     // define the objects in your Cityscape as instance variables
     // ...
+    private Building building1; 
     
     
-    
-    // define the CityscapeComponent contructor and intiailize all instance variables
+    // define the CityscapeComponent constructor and intialize all instance variables
     // ...
+    
+    public CityscapeComponent()
+    {
+        this.building1 = new Building(0, 600, 100, 300);
+    }
     
     
     /**
@@ -34,7 +40,7 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
-        
+        this.building1.draw(g2);
         
     }
     
