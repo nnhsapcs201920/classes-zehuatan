@@ -22,7 +22,7 @@ public class CityscapeComponent extends JComponent
     
     public CityscapeComponent()
     {
-        this.building1 = new Building(0, 600, 100, 300);
+        this.building1 = new Building(0, 200, 200, 400);
     }
     
     
@@ -40,6 +40,7 @@ public class CityscapeComponent extends JComponent
         
         // invoke the draw method on each object in your Cityscape
         // ...
+        
         this.building1.draw(g2);
         
     }
