@@ -15,14 +15,15 @@ public class CityscapeComponent extends JComponent
     // define the objects in your Cityscape as instance variables
     // ...
     private Building building1; 
-    
+    private Building building2;
     
     // define the CityscapeComponent constructor and intialize all instance variables
     // ...
     
     public CityscapeComponent()
     {
-        this.building1 = new Building(0, 200, 200, 400);
+        this.building1 = new Building(0, 200, 100, 400);
+        this.building2 = new Building(100, 100, 200, 500);
     }
     
     
@@ -42,7 +43,7 @@ public class CityscapeComponent extends JComponent
         // ...
         
         this.building1.draw(g2);
-        
+        this.building2.draw(g2);
     }
     
     /**

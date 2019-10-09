@@ -30,29 +30,27 @@ public class Building
      */
     public void draw(Graphics2D g2)
     {
-        int dimensionRatio = (this.height) / (this.width) ;
+        int dimensionRatio = (int) Math.pow(this.height * this.width, .25);; 
         Rectangle body = new Rectangle(this.cornerX, this.cornerY, this.width, this.height);
-        Rectangle window = new Rectangle(this.cornerX + (this.width / (dimensionRatio * 10)),
-        this.cornerY + (this.height / (dimensionRatio * 10)), dimensionRatio * 10, dimensionRatio * 10);
+        Rectangle window = new Rectangle(this.cornerX + (dimensionRatio),
+        this.cornerY + (dimensionRatio), dimensionRatio, dimensionRatio);
         g2.setColor(Color.GRAY);
         g2.fill(body);
         g2.setColor(Color.BLACK);
         g2.draw(body);
-        //fix math such that windows appear at regular intervals within the body of the building, and repeat
-        //for every row.
-        for (int i = 0; i < (this.height / dimensionRatio / 20); i++)
+        int YCoordinate = (int) window.getY();
+        for (int i = 0; i < ((this.height / dimensionRatio / 2) - 1); i++)
         {
-            //double adsofajsif = this.getY();
-            // need to keep Y value constant for the next loop, and increment for each height
-            for (int j = 0; j < (this.width / dimensionRatio / 20); j++)
+            for (int j = 0; j < (this.width / dimensionRatio / 2); j++)
             {
-                window.setLocation(this.cornerX + (2 * j * (dimensionRatio * 10) + (this.width / (dimensionRatio * 10))),
-                this.cornerY + (this.height / (dimensionRatio + 10)));
+                window.setLocation(this.cornerX + ((2 * j + 1) * (dimensionRatio)),
+                YCoordinate);
                 g2.setColor(Color.CYAN);
                 g2.fill(window);
                 g2.setColor(Color.BLACK);
                 g2.draw(window);
             }
+            YCoordinate += (dimensionRatio * 2);
         }
     }
 }
