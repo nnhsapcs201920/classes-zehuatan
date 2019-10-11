@@ -18,6 +18,12 @@ public class Building
     
     /**
      * Constructs a building with a coordinate position, height, and width.
+     * 
+     * @param x the x value of the upper left corner of the building
+     * @param y the y value of the upper left corner of the building
+     * @param initialWidth the width of the building
+     * @param initialHeight the height of the building
+     * 
      */
     public Building(int x, int y, int initialWidth,int initialHeight)
     {
@@ -30,6 +36,7 @@ public class Building
     
     /**
      * Draws the building.
+     * 
      */
     public void draw(Graphics2D g2)
     {

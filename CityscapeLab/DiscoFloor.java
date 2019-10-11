@@ -19,6 +19,16 @@ public class DiscoFloor
     private int rows;
     private int columns;
     
+    /**
+     * Initializes a disco floor with coordinate position, size, and number of rows and columns
+     * 
+     * @param x the x-coordinate of the upper left corner
+     * @param y the y-coordinate of the upper left corner
+     * @param frameWidth the width of the disco floor
+     * @param frameHeight the height of the disco floor
+     * @param numRows the number of rows
+     * @param numColumns the number of columns
+     */
     public DiscoFloor(int x, int y, int frameWidth, int frameHeight, int numRows, int numColumns)
     {
         this.tileColor = Color.WHITE;
@@ -53,6 +63,9 @@ public class DiscoFloor
         }
     }
     
+    /**
+     * Changes the color of the disco floor
+     */
     public void nextColor()
     {
         this.colorCounter++;

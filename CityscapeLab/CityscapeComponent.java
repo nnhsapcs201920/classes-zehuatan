@@ -37,11 +37,11 @@ public class CityscapeComponent extends JComponent
         this.building4 = new Building(300, 450, 100, 150);
         this.building5 = new Building(400, 450, 100, 150);
         this.building6 = new Building(500, 400, 100, 200);
-        this.building7 = new Building(600, 200, 100, 400);
+        this.building7 = new Building(600, 300, 100, 300);
         this.building8 = new Building(700, 50, 100, 550);
         this.majorSun = new Sun(100, 200, 600);
         this.sky = new Sky(800, 600);
-        this.discoFloor = new DiscoFloor(0, 600, 800, 200, 20, 20);
+        this.discoFloor = new DiscoFloor(0, 600, 800, 200, 10, 10);
         
     }
     

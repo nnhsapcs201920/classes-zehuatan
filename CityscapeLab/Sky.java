@@ -17,6 +17,9 @@ public class Sky
     
     /**
      * Constructs the sky
+     * 
+     * @param x the length of the sky
+     * @param y the height of the sky
      */
     public Sky(int x, int y)
     {

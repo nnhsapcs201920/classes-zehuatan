@@ -20,6 +20,10 @@ public class Sun
     
     /**
      * Constructs a sun with coordinate position, height, and radius.
+     * 
+     * @param x the x value of the left side of the sun
+     * @param y the y value of the top of the sun
+     * @param size the diameter of the sun
      */
     public Sun (int x, int y, int size)
     {
@@ -33,7 +37,7 @@ public class Sun
     }
     
     /**
-     * Draws the sun.
+     * Draws the sun, its rays, and its longitude lines
      */
     public void draw(Graphics2D g2)
     {
